@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.pruebas123.petagram.R;
 import com.pruebas123.petagram.pojo.Mascota;
+import com.pruebas123.petagram.restApiFirebase.model.UsuarioResponse;
 
 import java.util.ArrayList;
 
@@ -77,6 +78,11 @@ public class ConstructorMascotas {
     public void  actualizarCalificacion(Mascota mascota){
         BaseDatos db = new BaseDatos(context);
         db.updateMascota(mascota);
+    }
+
+    public UsuarioResponse ObtieneRegistro(){
+        BaseDatos db = new BaseDatos(context);
+        return db.obtenerRegistro();
     }
 
 }

@@ -74,8 +74,12 @@ public class RecyclerviewFragmentPresenter implements IRecyclerviewFragmentPrese
                                     mascota.setNombre(name);
                                     mascota.setUrlFoto(info.getMedia_url());
                                     mascota.setCalificacion(info.getLike_count());
+                                    mascota.setImagenid(info.getId());
+
+                                    Log.e("Error ", info.getId() );
                                     Log.e("Error", String.valueOf(info.getLike_count()));
                                     mascotas.add(mascota);
+
                                 }
                                 mostrarMascotasRV();
                             }
@@ -100,4 +104,6 @@ public class RecyclerviewFragmentPresenter implements IRecyclerviewFragmentPrese
         });
 
     }
+
+
 }

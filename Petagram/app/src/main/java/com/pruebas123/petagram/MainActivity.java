@@ -3,6 +3,7 @@ package com.pruebas123.petagram;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -26,6 +27,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.pruebas123.petagram.adapter.PageAdapter;
 import com.pruebas123.petagram.db.BaseDatos;
+import com.pruebas123.petagram.db.ConstantesBaseDatos;
 import com.pruebas123.petagram.fragmnet.PerfilFragment;
 import com.pruebas123.petagram.fragmnet.RecyclerviewFragment;
 import com.pruebas123.petagram.pojo.Mascota;
@@ -47,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     ArrayList<Mascota> mascotas_sort;
+    public static int numTab = 0;
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    UsuarioResponse usuarioResponse;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -195,9 +199,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 UsuarioResponse usuarioResponse = response.body();
+                //usuarioResponse = response.body();
                 Log.d("ID_FIREBASE",usuarioResponse.getId());
                 Log.d("TOKEN_FIREBASE",usuarioResponse.getToken());
                 Log.d("TOKEN_FIREBASE",usuarioResponse.getUserid());
+                almacenarRegistro(usuarioResponse);
             }
 
             @Override
@@ -205,6 +211,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void almacenarRegistro(UsuarioResponse usuarioResponse){
+        BaseDatos db = new BaseDatos(this);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBaseDatos.TABLE_USER_REGISTER_ID, usuarioResponse.getId());
+        contentValues.put(ConstantesBaseDatos.TABLE_USER_REGISTER_TOKEN, usuarioResponse.getToken());
+        contentValues.put(ConstantesBaseDatos.TABLE_USER_REGISTER_USERID, usuarioResponse.getUserid());
+        db.insertarRegistro(contentValues);
     }
 
 }

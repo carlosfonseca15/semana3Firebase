@@ -10,16 +10,19 @@ public class Mascota implements Serializable {
     private String nombre;
     private int calificacion;
     private String urlFoto;
+    private String imagenid;
 
-    public Mascota(int imagen, String nombre, int calificacion) {
+    public Mascota(int imagen, String nombre, int calificacion, String imagenid) {
         this.imagen = imagen;
         this.nombre = nombre;
         this.calificacion = calificacion;
+        this.imagenid = imagenid;
     }
 
-    public Mascota(int imagen, int calificacion) {
+    public Mascota(int imagen, int calificacion, String imagenid) {
         this.imagen = imagen;
         this.calificacion = calificacion;
+        this.imagenid = imagenid;
     }
 
     public Mascota() {
@@ -64,6 +67,14 @@ public class Mascota implements Serializable {
 
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
+    }
+
+    public String getImagenid() {
+        return imagenid;
+    }
+
+    public void setImagenid(String imagenid) {
+        this.imagenid = imagenid;
     }
 
 

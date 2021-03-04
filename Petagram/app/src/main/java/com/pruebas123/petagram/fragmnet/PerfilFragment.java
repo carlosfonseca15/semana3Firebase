@@ -51,12 +51,12 @@ public class PerfilFragment extends Fragment {
 
     private void iniciarListaFotosPerfil() {
         mperfil = new ArrayList<Mascota>();
-        mperfil.add(new Mascota(R.drawable.max, 2));
-        mperfil.add(new Mascota(R.drawable.max, 3));
-        mperfil.add(new Mascota(R.drawable.max, 4));
-        mperfil.add(new Mascota(R.drawable.max, 1));
-        mperfil.add(new Mascota(R.drawable.max, 7));
-        mperfil.add(new Mascota(R.drawable.max, 3));
+        mperfil.add(new Mascota(R.drawable.max, 2, "0"));
+        mperfil.add(new Mascota(R.drawable.max, 3, "0"));
+        mperfil.add(new Mascota(R.drawable.max, 4, "0"));
+        mperfil.add(new Mascota(R.drawable.max, 1,"0"));
+        mperfil.add(new Mascota(R.drawable.max, 7,"0"));
+        mperfil.add(new Mascota(R.drawable.max, 3,"0"));
     }
 
 }
